@@ -680,3 +680,93 @@ threadListSync(
  threadMembersUpdate
  Emitted whenever members are added or removed from a thread. 
 Permissions Required: GUILD_MEMBERS privileged intent
+PARAMETER    TYPE                                   DESCRIPTION
+oldMembers   Collection <Snowflake, ThreadMember>   The members before the update
+newMembers   Collection <Snowflake, ThreadMember>   The members after the update    
+```js
+threadMembersUpdate(
+    console.log(`members are added or removed from a thread`);
+    console.log({oldMembers, newMembers});
+);
+```
+
+ threadMemberUpdate
+ Emitted whenever the client user's thread member is updated.
+PARAMETER   TYPE           DESCRIPTION
+oldMember   ThreadMember   The member before the update
+newMember   ThreadMember   The member after the update      
+```js
+threadMemberUpdate(
+    console.log(`the client user's thread member is updated`);
+    console.log({oldMember, newMember});
+);
+```
+
+ threadUpdate
+ Emitted whenever a thread is updated - e.g. name change, archive state change, locked state change.
+PARAMETER   TYPE            DESCRIPTION
+oldThread   ThreadChannel   The thread before the update
+newThread   ThreadChannel   The thread after the update     
+```js
+threadUpdate(
+    console.log(`thread is updated - e.g. name change, archive state change, locked state change.`);
+    console.log({oldThread, newThread});
+);
+```
+
+ typingStart
+ Emitted whenever a user starts typing in a channel.
+PARAMETER      TYPE            DESCRIPTION
+channel        Channel         The channel the user started typing in
+user           User            The user that started typing    
+```js
+typingStart(
+    console.log(`${user.tag} has started typing`);
+);
+```
+
+ userUpdate
+ Emitted whenever a user's details (e.g. username) are changed.
+PARAMETER      TYPE        DESCRIPTION
+oldUser        User        The user before the update
+newUser        User        The user after the update    
+```js
+userUpdate(
+    console.log(`user's details (e.g. username) are changed`);
+);
+```
+
+ voiceStateUpdate
+ Emitted whenever a user changes voice state - e.g. joins/leaves a channel, mutes/unmutes.
+PARAMETER    TYPE             DESCRIPTION
+oldMember    GuildMember      The member before the voice state update
+newMember    GuildMember      The member after the voice state update    
+```js
+voiceStateUpdate(
+    console.log(`a user changes voice state`);
+);
+```
+
+ warn
+ Emitted for general warnings. 
+PARAMETER    TYPE       DESCRIPTION
+info         string     The warning   
+```js
+warn(
+    console.warn(`a general warning has been emitted`);
+    console.warn({info});
+);
+```
+
+ webhookUpdate
+ Emitted whenever a channel has its webhooks changed.
+PARAMETER   TYPE           DESCRIPTION
+channel     TextChannel    The channel that had a webhook update
+            NewsChannel
+            VoiceChannel        
+```js
+webhookUpdate(
+    console.warn(`a channel's webhooks have changed`);
+    console.warn({channel});
+);
+```
