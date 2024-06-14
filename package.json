@@ -1,25 +1,25 @@
 {
-  "name": "discordjs-simple",
+  "name": "simple-discord-online",
   "version": "1.0.0",
-  "description": "discordjs-simple is a package which one help you to create discord bot so easily",
+  "description": "simple-discord-online is a package which one help you to create discord bot so easily",
   "main": "Client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RahulTarafder/discordjs-simple.git"
+    "url": "git+https://github.com/RahulTarafder/simple-discord-online.git"
   },
   "keywords": [
     "discord.js",
-    "discordjs-simple"
+    "simple-discord-online"
   ],
   "author": "Rahul Tarafder",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RahulTarafder/discordjs-simple/issues"
+    "url": "https://github.com/RahulTarafder/simple-discord-online/issues"
   },
-  "homepage": "https://github.com/RahulTarafder/discordjs-simple#readme",
+  "homepage": "https://github.com/RahulTarafder/simple-discord-online#readme",
   "dependencies": {
     "discord.js": "^14.15.3"
   }
