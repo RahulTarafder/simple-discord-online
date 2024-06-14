@@ -1,26 +1,26 @@
 <div align="center">
 	<p>
-		<a href="https://www.npmjs.com/package/easy-discordjs"><img src="https://img.shields.io/npm/v/easy-discordjs.svg?maxAge=3600" alt="npm version" /></a>
-		<a href="https://www.npmjs.com/package/easy-discordjs"><img src="https://img.shields.io/npm/dt/easy-discordjs.svg?maxAge=3600" alt="npm downloads" /></a>
+		<a href="https://www.npmjs.com/package/easy-discord-bot"><img src="https://img.shields.io/npm/v/easy-discord-bot.svg?maxAge=3600" alt="npm version" /></a>
+		<a href="https://www.npmjs.com/package/easy-discord-bot"><img src="https://img.shields.io/npm/dt/easy-discord-bot.svg?maxAge=3600" alt="npm downloads" /></a>
 	</p>
 </div>
 
-# easy-discordjs
-easy-discordjs is a package which one help to create discord bot's event even mote easily it's will help to new developer to create their own bot 
+# easy-discord-bot
+easy-discord-bot is a package which one help to create discord bot's event even mote easily it's will help to new developer to create their own bot 
 
 # Install
 ```sh
-npm install easy-discordjs
+npm install easy-discord-bot
 ```
 
 # Import
 ```js
-const client = require("easy-discordjs");
+const client = require("easy-discord-bot");
 ```
 
 # Demo
 ```js
-const client = require("easy-discordjs");
+const client = require("easy-discord-bot");
 
 client.start("Token");
 
