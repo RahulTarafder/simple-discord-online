@@ -1,26 +1,26 @@
 <div align="center">
 	<p>
-		<a href="https://www.npmjs.com/package/discordjs-simple"><img src="https://img.shields.io/npm/v/discordjs-simple.svg?maxAge=3600" alt="npm version" /></a>
-		<a href="https://www.npmjs.com/package/discordjs-simple"><img src="https://img.shields.io/npm/dt/discordjs-simple.svg?maxAge=3600" alt="npm downloads" /></a>
+		<a href="https://www.npmjs.com/package/simple-discord-online"><img src="https://img.shields.io/npm/v/simple-discord-online.svg?maxAge=3600" alt="npm version" /></a>
+		<a href="https://www.npmjs.com/package/simple-discord-online"><img src="https://img.shields.io/npm/dt/simple-discord-online.svg?maxAge=3600" alt="npm downloads" /></a>
 	</p>
 </div>
 
-# discordjs-simple
-discordjs-simple is a package which one help to create discord bot's event even mote easily it's will help to new developer to create their own bot 
+# simple-discord-online
+simple-discord-online is a package which one help to create discord bot's event even mote easily it's will help to new developer to create their own bot 
 
 # Install
 ```sh
-npm install discordjs-simple
+npm install simple-discord-online
 ```
 
 # Import
 ```js
-const client = require("discordjs-simple");
+const client = require("simple-discord-online");
 ```
 
 # Demo
 ```js
-const client = require("discordjs-simple");
+const client = require("simple-discord-online");
 
 client.start("Token");
 
