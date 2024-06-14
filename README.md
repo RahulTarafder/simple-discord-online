@@ -1,5 +1,5 @@
 # easy-discordjs
-easy-discordjs is a package which one help to create discord bot's event even mote easily it's will help to bew developer
+easy-discordjs is a package which one help to create discord bot's event even mote easily it's will help to new developer to create their own bot 
 
 # Install
 ```sh
