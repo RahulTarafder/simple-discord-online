@@ -5,22 +5,22 @@
 	</p>
 </div>
 
-# easy-discord-bot
-easy-discord-bot is a package which one help to create discord bot's event even mote easily it's will help to new developer to create their own bot 
+# discordjs-simple
+discordjs-simple is a package which one help to create discord bot's event even mote easily it's will help to new developer to create their own bot 
 
 # Install
 ```sh
-npm install easy-discord-bot
+npm install discordjs-simple
 ```
 
 # Import
 ```js
-const client = require("easy-discord-bot");
+const client = require("discordjs-simple");
 ```
 
 # Demo
 ```js
-const client = require("easy-discord-bot");
+const client = require("discordjs-simple");
 
 client.start("Token");
 
