@@ -1,25 +1,25 @@
 {
-  "name": "easy-discordjs",
+  "name": "discordjs-simple",
   "version": "1.0.0",
-  "description": "easy-discord.js is a package which one help you to create discord bot so easily",
+  "description": "discordjs-simple is a package which one help you to create discord bot so easily",
   "main": "Client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RahulTarafder/Easy-Discordjs.git"
+    "url": "git+https://github.com/RahulTarafder/discordjs-simple.git"
   },
   "keywords": [
     "discord.js",
-    "easy-discordjs"
+    "discordjs-simple"
   ],
   "author": "Rahul Tarafder",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RahulTarafder/Easy-Discordjs/issues"
+    "url": "https://github.com/RahulTarafder/discordjs-simple/issues"
   },
-  "homepage": "https://github.com/RahulTarafder/Easy-Discordjs#readme",
+  "homepage": "https://github.com/RahulTarafder/discordjs-simple#readme",
   "dependencies": {
     "discord.js": "^14.15.3"
   }
