@@ -33,9 +33,6 @@ class BOT extends Client {
         repliedUser: false,
       },
     });
-    this.send(interaction, message) = interaction.channel.send(message);
-    this.reply(interaction, message) = interaction.reply(message);
-    this.embed(message, color) = new EmbedBuilder().setColor(color).setDescription(`${message.substring(0, 3000)}`);
   }
     
   start(token) {
