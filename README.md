@@ -12,9 +12,6 @@ easy-discordjs is a package which one help to create discord bot's event even mo
 ```sh
 npm install easy-discordjs
 ```
-```js
-yarn addd easy-discordjs
-```
 
 # Import
 ```js
