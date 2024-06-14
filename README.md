@@ -1,7 +1,7 @@
 <div align="center">
 	<p>
-		<a href="https://www.npmjs.com/package/easy-discord-bot"><img src="https://img.shields.io/npm/v/easy-discord-bot.svg?maxAge=3600" alt="npm version" /></a>
-		<a href="https://www.npmjs.com/package/easy-discord-bot"><img src="https://img.shields.io/npm/dt/easy-discord-bot.svg?maxAge=3600" alt="npm downloads" /></a>
+		<a href="https://www.npmjs.com/package/easy-discordjs-bot"><img src="https://img.shields.io/npm/v/easy-discordjs-bot.svg?maxAge=3600" alt="npm version" /></a>
+		<a href="https://www.npmjs.com/package/easy-discordjs-bot"><img src="https://img.shields.io/npm/dt/easy-discordjs-bot.svg?maxAge=3600" alt="npm downloads" /></a>
 	</p>
 </div>
 
