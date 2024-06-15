@@ -413,7 +413,7 @@ client.on("rateLimit", async (rateLimitData) => {code(rateLimitData)});
 // ready
 /* Emitted when the client becomes ready to start working.    */
 ready(code) {
-client.on("ready", async () => {code});
+client.on("ready", async (client) => {code(client)});
 };
 
 // roleCreate
