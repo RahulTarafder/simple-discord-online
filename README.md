@@ -6,7 +6,7 @@
 </div>
 
 # simple-discord-online
-simple-discord-online is a package which one help to create discord bot's event even mote easily it's will help to new developer to create their own bot 
+Simple-discord-online is a valuable package designed to streamline the creation of Discord bot events, significantly easing the process for new developers venturing into bot development. By providing simplified tools and straightforward functionalities, it empowers users to quickly set up and manage bot events with minimal complexity. This accessibility not only reduces the learning curve but also encourages more people to engage in bot creation, fostering a more inclusive developer community around Discord applications.
 
 # Install
 ```sh
@@ -15,19 +15,96 @@ npm install simple-discord-online
 
 # Import
 ```js
-const client = require("simple-discord-online");
+const { Client } = require("simple-discord-online");
 ```
 
 # Demo
 ```js
-const client = require("simple-discord-online");
+const { Client } = require("simple-discord-online");
+const client = Client;
 
 client.start("Token");
 
-client.ready(console.log("bot is online"));
+client.ready((client) => {
+console.log("bot is online")
+});
 ```
 
 # Usages
+// Create a new ActionRowBuilder 
+/*
+The ActionRowBuilder in discord.js is used to create and manage interactive components like buttons, select menus, and text inputs in a message. It organizes these components into a row within a message, allowing for a structured layout. Each action row can hold up to 5 components.
+*/
+```js
+client.ActionRow(component);
+```
+
+// Create Button
+/*
+The ButtonBuilder in discord.js is used to create interactive buttons for messages. It allows customization of button style, label, emoji, and custom ID for interaction handling. Buttons can be added to an ActionRowBuilder to be sent within messages.
+*/
+```js
+client.Button([
+{ customId: 'primary', label: 'Primary', style: ButtonStyle.Primary },
+{ customId: 'secondary', label: 'Secondary', style: ButtonStyle.Secondary },
+{ customId: 'success', label: 'Success', style: ButtonStyle.Success },
+{ customId: 'danger', label: 'Danger', style: ButtonStyle.Danger },
+{ label: 'Link', style: ButtonStyle.Link, url: 'https://example.com' }
+]);
+```
+
+// create Select Menu
+/*
+The StringSelectMenuBuilder in discord.js is used to create customizable select menus for messages. It allows for multiple options to be defined with labels, descriptions, and values. Users can interact with the menu to make selections which can then be handled by the bot
+*/
+```js
+client.SelectMenu({
+customId: "id",
+placeholder: "placeholder",
+options: [options]
+})
+```
+
+// create Menu Options
+/*
+The StringSelectMenuOptionBuilder in discord.js is a class used to define individual options within a select menu. It allows setting properties like label, value, description, and default selection status. These options are then added to a StringSelectMenuBuilder to create a complete select menu.
+*/
+```js
+client.MenuOption({
+label: "label",
+dec: "description",
+value: "value"
+});
+```
+// create Embed
+/*
+The EmbedBuilder in discord.js is a utility class for creating rich message embeds. It provides a fluent interface to set properties like title, description, color, fields, and images. Embeds can enhance message presentation with structured and visually appealing content.
+*/
+```js
+client.Embed({
+title = 'Title',
+description = 'Description',
+url = 'https://example.com',
+color = '#ffffff',
+timestamp,
+footerText = 'Footer',
+footerIcon = 'https://example.com',
+thumbnail = 'https://example.com',
+image = 'https://example.com',
+authorName = 'Author',
+authorURL = 'https://example.com',
+authorIcon = 'https://example.com',
+fields = [{
+name: 'Field 1',
+value: 'Value 1', inline: true },
+{
+name: 'Field 2',
+value: 'Value 2', inline: true }
+]
+})
+```
+
+# Events
  apiRequest
 Emitted before every API request. This event can emit several times for the same request, e.g. when hitting a rate limit.
 PARAMETER    TYPE        DESCRIPTION

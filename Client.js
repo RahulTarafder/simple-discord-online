@@ -1,14 +1,192 @@
-const {
-  Client,
-  Collection,
-  GatewayIntentBits,
-  Partials,
-  User,
+const { 
+  ActionRowBuilder,
+  ActivityOptions,
+  ActivityType,
+  ApplicationCommandManager,
+  ApplicationCommandOptionType,
+  ApplicationCommandType,
+  Attachment,
+  AttachmentBuilder,
+  AttachmentPayload,
+  AuditLogEvent,
+  AutoModerationActionExecution,
+  AutoModerationActionMetadata,
+  AutoModerationRuleTriggerMetadata,
+  AutoModerationRuleTriggerType,
+  Awaitable,
+  Base,
+  BaseApplicationCommandData,
+  BaseGuild,
+  BaseGuildEmojiManager,
+  BaseGuildTextChannel,
+  BaseGuildVoiceChannel,
+  BaseMessageComponent,
+  BitField,
+  ButtonBuilder,
+  ButtonInteraction,
+  ButtonStyle,
+  CacheType,
+  CacheWithLimitsOptions,
+  CategoryChannel,
+  Channel,
+  ChannelFlags,
+  ChannelManager,
+  ChannelType,
+  ChatInputApplicationCommandData,
+  Discord,
+  ClientApplication,
+  ClientEvents,
+  ClientOptions,
+  ClientPresence,
+  ClientUser,
+  ColorResolvable,
+  Color,
+  CommandInteraction,
+  CommandInteractionOptionResolver,
+  ComponentType,
+  ContextMenuCommandInteraction,
+  ContextMenuInteraction,
+  DataResolver,
+  DataStore,
+  DMChannel,
+  Embed,
   EmbedBuilder,
+  Emoji,
+  EmojiIdentifierResolvable,
+  EmojiManager,
+  ErrorCodes,
+  Events,
+  FetchOptions,
+  FileOptions,
+  ForumChannel,
+  GatewayIntents,
+  Guild,
+  GuildApplicationCommandManager,
+  GuildAuditLogs,
+  GuildAuditLogsEntry,
+  GuildBan,
+  GuildBanManager,
+  GuildChannel,
+  GuildChannelManager,
+  GuildChannelResolvable,
+  GuildEmoji,
+  GuildEmojiManager,
+  GuildFeature,
+  GuildIntegration,
+  GuildInviteManager,
+  GuildManager,
+  GuildMember,
+  GuildMemberManager,
+  GuildMemberResolvable,
+  GuildPreview,
+  GuildScheduledEvent,
+  GuildScheduledEventManager,
+  GuildScheduledEventUser,
+  GuildSticker,
+  GuildStickerManager,
+  HTTPError,
+  Interaction,
+  InteractionCollector,
+  InteractionDeferOptions,
+  InteractionReplyOptions,
+  InteractionType,
+  IntentsBitField,
+  Invite,
+  InviteManager,
+  LimitedCollection,
+  LocalizationMap,
+  Message,
+  MessageAdditions,
+  MessageAttachment,
+  MessageButton,
+  MessageCollector,
+  MessageComponentInteraction,
+  MessageCreateOptions,
+  MessageEditOptions,
+  MessageEmbed,
+  MessageFlags,
+  MessageManager,
+  MessageMentions,
+  MessageOptions,
+  MessagePayload,
+  MessageReaction,
+  MessageReactionResolvable,
+  MessageSelectMenu,
+  MessageSelectOption,
+  MessageTarget,
+  MessageType,
+  ModalBuilder,
+  ModalSubmitInteraction,
+  ModalSubmitFields,
+  MultipartData,
+  NewsChannel,
   Options,
-} = require("discord.js");
+  PartialTypes,
+  PermissionFlagsBits,
+  PermissionOverwriteManager,
+  PermissionOverwrites,
+  Permissions,
+  PermissionsBitField,
+  Presence,
+  PresenceManager,
+  ReactionCollector,
+  ReactionEmoji,
+  ReactionManager,
+  ReactionUserManager,
+  Resolvable,
+  Role,
+  RoleManager,
+  RoleResolvable,
+  SelectMenuBuilder,
+  SelectMenuInteraction,
+  SelectMenuOptionBuilder,
+  Shard,
+  ShardClientUtil,
+  ShardEvents,
+  ShardManager,
+  Snowflake,
+  StageChannel,
+  StageInstance,
+  StageInstanceManager,
+  Sticker,
+  StickerManager,
+  StickerPack,
+  StickerResolvable,
+  Sweepers,
+  SystemChannelFlags,
+  SystemChannelFlagsBitField,
+  Team,
+  TeamMember,
+  TextChannel,
+  ThreadChannel,
+  ThreadChannelManager,
+  ThreadChannelResolvable,
+  ThreadManager,
+  ThreadMember,
+  ThreadMemberManager,
+  ThreadMemberResolvable,
+  Typing,
+  User,
+  UserContextMenuCommandData,
+  UserFlags,
+  UserFlagsBitField,
+  UserManager,
+  UserResolvable,
+  Util,
+  ValidationError,
+  VerificationLevel,
+  VoiceChannel,
+  VoiceRegion,
+  VoiceState,
+  VoiceStateManager,
+  Webhook,
+  WebhookClient,
+  WebhookMessageOptions,
+  WebhookToken
+} = require('discord.js');
 
-class BOT extends Client {
+
+class BOT extends Discord.Client {
   constructor() {
     super({
       partials: [
@@ -34,22 +212,15 @@ class BOT extends Client {
       },
     });
   }
-    
-  start(token) {
-    this.login(token);
-  }
-  /**
-   *
-   * @param {User} user
-   * @returns
-   */
+  
+  // events
    
   // apiRequest
 /* Emitted before every API request. This event can emit several times for the same request, e.g. when hitting a rate limit.
 PARAMETER    TYPE        DESCRIPTION
 request      APIRequest     The request that is about to be sent    */
 apiRequest(code) { 
-  client.on("apiRequest", async (request) => {code(apiRequest)})
+  this.on("apiRequest", async (request) => {code(apiRequest)})
 };
 
 // apiResponse
@@ -57,7 +228,7 @@ apiRequest(code) {
 PARAMETER    TYPE        DESCRIPTION
 request      APIRequest     The request that is about to be sent    */
 apiResponse(code) { 
-  client.on("apiResponse", async (response) => {code(response)})
+  this.on("apiResponse", async (response) => {code(response)})
 };
 
 // the previous, apiRequest and apiResponse, are informational events that are emitted quite frequently, it is highly recommended to check request.path to filter the data.
@@ -67,7 +238,7 @@ apiResponse(code) {
 PARAMETER    TYPE        DESCRIPTION
 channel      Channel     The channel that was created    */
 channelCreate(code) {
-client.on("channelCreate", async (channel) => {code(channel)});
+this.on("channelCreate", async (channel) => {code(channel)});
 };
 
 // channelDelete
@@ -75,7 +246,7 @@ client.on("channelCreate", async (channel) => {code(channel)});
 PARAMETER   TYPE      DESCRIPTION
 channel     Channel   The channel that was deleted    */
 channelDelete(code) {
-client.on("channelDelete", async (channel) => {code(channel)});
+this.on("channelDelete", async (channel) => {code(channel)});
 };
 
 // channelPinsUpdate
@@ -84,7 +255,7 @@ PARAMETER    TYPE         DESCRIPTION
 channel      Channel      The channel that the pins update occurred in
 time         Date         The time of the pins update    */
 channelPinsUpdate(code) {
-client.on("channelPinsUpdate", async (channel, time) => {code(channel, time)});
+this.on("channelPinsUpdate", async (channel, time) => {code(channel, time)});
 };
 
 // channelUpdate
@@ -93,7 +264,7 @@ PARAMETER        TYPE        DESCRIPTION
 oldChannel       Channel     The channel before the update
 newChannel       Channel     The channel after the update    */
 channelUpdate(code) {
-client.on("channelUpdate", async (oldChannel, newChannel) => {code(oldChannel, newChannel)});
+this.on("channelUpdate", async (oldChannel, newChannel) => {code(oldChannel, newChannel)});
 };
 
 // debug
@@ -101,7 +272,7 @@ client.on("channelUpdate", async (oldChannel, newChannel) => {code(oldChannel, n
 PARAMETER    TYPE         DESCRIPTION
 info         string       The debug information    */
 debug(code) {
-client.on("debug", async (info) => {code(info)});
+this.on("debug", async (info) => {code(info)});
 };
 
 // emojiCreate
@@ -109,7 +280,7 @@ client.on("debug", async (info) => {code(info)});
 PARAMETER    TYPE          DESCRIPTION
 emoji        Emoji         The emoji that was created    */
 emojiCreate(code) {
-client.on("emojiCreate", async (emoji) => {code(emoji)});
+this.on("emojiCreate", async (emoji) => {code(emoji)});
 };
 
 // emojiDelete
@@ -117,7 +288,7 @@ client.on("emojiCreate", async (emoji) => {code(emoji)});
 PARAMETER    TYPE         DESCRIPTION
 emoji        Emoji        The emoji that was deleted    */
 emojiDelete(code) {
-client.on("emojiDelete", async (emoji) => {code(emoji)});
+this.on("emojiDelete", async (emoji) => {code(emoji)});
 };
 
 // emojiUpdate
@@ -126,7 +297,7 @@ PARAMETER    TYPE       DESCRIPTION
 oldEmoji     Emoji      The old emoji
 newEmoji     Emoji      The new emoji    */
 emojiUpdate(code) {
-client.on("emojiUpdate", async (oldEmoji, newEmoji) => {code(oldEmoji, newEmoji)});
+this.on("emojiUpdate", async (oldEmoji, newEmoji) => {code(oldEmoji, newEmoji)});
 };
 
 // error
@@ -134,7 +305,7 @@ client.on("emojiUpdate", async (oldEmoji, newEmoji) => {code(oldEmoji, newEmoji)
 PARAMETER    TYPE     DESCRIPTION
 error        Error    The encountered error    */
 error(code) {
-client.on("error", async (error) => {code(error)});
+this.on("error", async (error) => {code(error)});
 };
 
 // guildBanAdd
@@ -143,7 +314,7 @@ PARAMETER    TYPE          DESCRIPTION
 guild        Guild         The guild that the ban occurred in
 user         User          The user that was banned    */
 guildBanAdd(code) {
-client.on("guildBanAdd", async (guild, user) => {code(guild, user)});
+this.on("guildBanAdd", async (guild, user) => {code(guild, user)});
 };
 
 // guildBanRemove
@@ -152,7 +323,7 @@ PARAMETER    TYPE         DESCRIPTION
 guild        Guild        The guild that the unban occurred in
 user         User         The user that was unbanned    */
 guildBanRemove(code) {
-client.on("guildBanRemove", async (guild, user) => {code(guild, user)});
+this.on("guildBanRemove", async (guild, user) => {code(guild, user)});
 };
 
 // guildCreate
@@ -160,7 +331,7 @@ client.on("guildBanRemove", async (guild, user) => {code(guild, user)});
 PARAMETER    TYPE         DESCRIPTION
 guild        Guild        The created guild    */
 guildCreate(code) {
-client.on("guildCreate", async (guild) => {code(guild)});
+this.on("guildCreate", async (guild) => {code(guild)});
 };
 
 // guildDelete
@@ -168,7 +339,7 @@ client.on("guildCreate", async (guild) => {code(guild)});
 PARAMETER    TYPE         DESCRIPTION
 guild        Guild        The guild that was deleted    */
 guildDelete(code) {
-client.on("guildDelete", async (guild) => {code(guild)});
+this.on("guildDelete", async (guild) => {code(guild)});
 };
 
 // guildIntegrationsUpdate
@@ -176,7 +347,7 @@ client.on("guildDelete", async (guild) => {code(guild)});
 PARAMETER   TYPE    DESCRIPTION
 guild       Guild   The guild whose integrations were updated   */
 guildIntegrationsUpdate(code) {
-client.on("guildIntegrationsUpdate", async (guild) => {code(guild)});
+this.on("guildIntegrationsUpdate", async (guild) => {code(guild)});
 };
 
 // guildMemberAdd
@@ -184,7 +355,7 @@ client.on("guildIntegrationsUpdate", async (guild) => {code(guild)});
 PARAMETER     TYPE               DESCRIPTION
 member        GuildMember        The member that has joined a guild    */
 guildMemberAdd(code) {
-client.on("guildMemberAdd", async (member) => {code(member)});
+this.on("guildMemberAdd", async (member) => {code(member)});
 };
 
 // guildMemberAvailable
@@ -192,7 +363,7 @@ client.on("guildMemberAdd", async (member) => {code(member)});
 PARAMETER     TYPE               DESCRIPTION
 member        GuildMember        The member that became available    */
 guildMemberAvailable(code) {
-client.on("guildMemberAvailable", async (member) => {code(member)});
+this.on("guildMemberAvailable", async (member) => {code(member)});
 };
 
 // guildMemberRemove
@@ -200,7 +371,7 @@ client.on("guildMemberAvailable", async (member) => {code(member)});
 PARAMETER     TYPE               DESCRIPTION
 member        GuildMember        The member that has left/been kicked from the guild    */
 guildMemberRemove(code) {
-client.on("guildMemberRemove", async (member) => {code(member)});
+this.on("guildMemberRemove", async (member) => {code(member)});
 };
 
 // guildMembersChunk
@@ -209,7 +380,7 @@ PARAMETER      TYPE                      DESCRIPTION
 members        Array<GuildMember>        The members in the chunk
 guild          Guild                     The guild related to the member chunk    */
 guildMembersChunk(code) {
-client.on("guildMembersChunk", async (members, guild, chunk) => {code(members, guild, chunk)});
+this.on("guildMembersChunk", async (members, guild, chunk) => {code(members, guild, chunk)});
 };
 
 // guildMemberUpdate
@@ -218,7 +389,7 @@ PARAMETER    TYPE               DESCRIPTION
 oldMember    GuildMember        The member before the update
 newMember    GuildMember        The member after the update    */
 guildMemberUpdate(code) {
-client.on("guildMemberUpdate", async (oldMember, newMember) => {code(oldMember, newMember)});
+this.on("guildMemberUpdate", async (oldMember, newMember) => {code(oldMember, newMember)});
 };
 
 // guildScheduledEventCreate
@@ -226,7 +397,7 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {code(oldMember, 
 PARAMETER             TYPE                  DESCRIPTION
 guildScheduledEvent   GuildScheduledEvent   The created guild scheduled event   */
 guildScheduledEventCreate(code) {
-client.on("guildScheduledEventCreate", async (guildScheduledEvent) => {code(guildScheduledEvent)});
+this.on("guildScheduledEventCreate", async (guildScheduledEvent) => {code(guildScheduledEvent)});
 };
 
 // guildScheduledEventDelete
@@ -234,7 +405,7 @@ client.on("guildScheduledEventCreate", async (guildScheduledEvent) => {code(guil
 PARAMETER             TYPE                  DESCRIPTION
 guildScheduledEvent   GuildScheduledEvent   The deleted guild scheduled event   */
 guildScheduledEventDelete(code) {
-client.on("guildScheduledEventDelete", async (guildScheduledEvent) => {code(guildScheduledEvent)});
+this.on("guildScheduledEventDelete", async (guildScheduledEvent) => {code(guildScheduledEvent)});
 };
 
 // guildScheduledEventUpdate
@@ -243,7 +414,7 @@ PARAMETER                TYPE                   DESCRIPTION
 oldGuildScheduledEvent   ?GuildScheduledEvent   The guild scheduled event object before the update
 newGuildScheduledEvent   GuildScheduledEvent    The guild scheduled event object after the update  */
 guildScheduledEventUpdate(code) {
-client.on("guildScheduledEventUpdate", async (oldGuildScheduledEvent, newGuildScheduledEvent) => {code(oldGuildScheduledEvent, newGuildScheduledEvent)});
+this.on("guildScheduledEventUpdate", async (oldGuildScheduledEvent, newGuildScheduledEvent) => {code(oldGuildScheduledEvent, newGuildScheduledEvent)});
 };
 
 // guildScheduledEventUserAdd
@@ -252,7 +423,7 @@ PARAMETER             TYPE                  DESCRIPTION
 guildScheduledEvent   GuildScheduledEvent   The guild scheduled event
 user                  User                  The user who subscribed */ 
 guildScheduledEventUserAdd(code) {
-client.on("guildScheduledEventUserAdd", async (guildScheduledEvent, user) => {code(guildScheduledEvent, user)});
+this.on("guildScheduledEventUserAdd", async (guildScheduledEvent, user) => {code(guildScheduledEvent, user)});
 };
 
 // guildScheduledEventUserRemove
@@ -261,7 +432,7 @@ PARAMETER             TYPE                  DESCRIPTION
 guildScheduledEvent   GuildScheduledEvent   The guild scheduled event
 user                  User                  The user who unsubscribed */ 
 guildScheduledEventUserRemove(code) {
-client.on("guildScheduledEventUserRemove", async (guildScheduledEvent, user) => {code(guildScheduledEvent, user)});
+this.on("guildScheduledEventUserRemove", async (guildScheduledEvent, user) => {code(guildScheduledEvent, user)});
 };
 
 // guildUnavailable
@@ -269,7 +440,7 @@ client.on("guildScheduledEventUserRemove", async (guildScheduledEvent, user) => 
 PARAMETER    TYPE          DESCRIPTION
 guild        Guild         The guild that has become unavailable    */
 guildUnavailable(code) {
-client.on("guildUnavailable", async (guild) => {code(guild)});
+this.on("guildUnavailable", async (guild) => {code(guild)});
 };
 
 // guildUpdate
@@ -278,7 +449,7 @@ PARAMETER     TYPE      DESCRIPTION
 oldGuild      Guild     The guild before the update
 newGuild      Guild     The guild after the update    */
 guildUpdate(code) {
-client.on("guildUpdate", async (oldGuild, newGuild) => {code(oldGuild, newGuild)});
+this.on("guildUpdate", async (oldGuild, newGuild) => {code(oldGuild, newGuild)});
 };
 
 // interaction
@@ -289,7 +460,7 @@ client.on("guildUpdate", async (oldGuild, newGuild) => {code(oldGuild, newGuild)
 PARAMETER     TYPE          DESCRIPTION
 interaction   Interaction   The interaction which was created  */
 interactionCreate(code) {
-client.on("interactionCreate", async (interaction) => {code(interaction)});
+this.on("interactionCreate", async (interaction) => {code(interaction)});
 }
 
 // invalidated
@@ -302,7 +473,7 @@ so, I'm not putting in an example because you really shouldn't be rolling your o
 PARAMETER                   TYPE                        DESCRIPTION
 invalidRequestWarningData   InvalidRequestWarningData   Object containing the invalid request info  */
 invalidRequestWarning(code) {
-client.on("invalidRequestWarning", async (invalidRequestWarningData) => {code(invalidRequestWarningData)});
+this.on("invalidRequestWarning", async (invalidRequestWarningData) => {code(invalidRequestWarningData)});
 };
 
 // inviteCreate
@@ -311,7 +482,7 @@ Permissions Required: MANAGE_GUILD permissions for the guild, or MANAGE_CHANNELS
 PARAMETER   TYPE    DESCRIPTION
 invite          Invite  The invite that was created  */
 inviteCreate(code) {
-client.on("inviteCreate", async (invite) => {code(invite)});
+this.on("inviteCreate", async (invite) => {code(invite)});
 };
 
 // inviteDelete
@@ -320,7 +491,7 @@ Permissions Required: MANAGE_GUILD permissions for the guild, or MANAGE_CHANNELS
 PARAMETER   TYPE    DESCRIPTION
 invite          Invite  The invite that was deleted */
 inviteDelete(code) {
-client.on("inviteDelete", async (invite) => {code(invite)});
+this.on("inviteDelete", async (invite) => {code(invite)});
 };
 
 // message
@@ -331,7 +502,7 @@ client.on("inviteDelete", async (invite) => {code(invite)});
 PARAMETER   TYPE      DESCRIPTION
 message     Message   The created message */
 messageCreate(code) {
-client.on("messageCreate", async (message) => {code(message)});
+this.on("messageCreate", async (message) => {code(message)});
 };
 
 // messageDelete
@@ -339,7 +510,7 @@ client.on("messageCreate", async (message) => {code(message)});
 PARAMETER      TYPE           DESCRIPTION
 message        Message        The deleted message    */
 messageDelete(code) {
-client.on("messageDelete", async (message) => {code(message)});
+this.on("messageDelete", async (message) => {code(message)});
 };
 
 // messageDeleteBulk
@@ -347,7 +518,7 @@ client.on("messageDelete", async (message) => {code(message)});
 PARAMETER    TYPE                              DESCRIPTION
 messages     Collection<Snowflake, Message>    The deleted messages, mapped by their ID    */
 messageDeleteBulk(code) {
-client.on("messageDeleteBulk", async (messages) => {code(messages)});
+this.on("messageDeleteBulk", async (messages) => {code(messages)});
 };
 
 // messageReactionAdd
@@ -356,7 +527,7 @@ PARAMETER              TYPE                   DESCRIPTION
 messageReaction        MessageReaction        The reaction object
 user                   User                   The user that applied the emoji or reaction emoji     */
 messageReactionAdd(code) {
-client.on("messageReactionAdd", async (messageReaction, user) => {code(messageReaction, user)});
+this.on("messageReactionAdd", async (messageReaction, user) => {code(messageReaction, user)});
 }
 
 // messageReactionRemove
@@ -365,7 +536,7 @@ PARAMETER              TYPE                   DESCRIPTION
 messageReaction        MessageReaction        The reaction object
 user                   User                   The user that removed the emoji or reaction emoji     */
 messageReactionRemove(code) {
-client.on("messageReactionRemove", async (messageReaction, user) => {code(messageReaction, user)});
+this.on("messageReactionRemove", async (messageReaction, user) => {code(messageReaction, user)});
 };
 
 // messageReactionRemoveAll
@@ -373,7 +544,7 @@ client.on("messageReactionRemove", async (messageReaction, user) => {code(messag
 PARAMETER          TYPE           DESCRIPTION
 message            Message        The message the reactions were removed from    */
 messageReactionRemoveAll(code) {
-client.on("messageReactionRemoveAll", async (message) => {code(message)});
+this.on("messageReactionRemoveAll", async (message) => {code(message)});
 };
 
 // messageReactionRemoveEmoji
@@ -381,7 +552,7 @@ client.on("messageReactionRemoveAll", async (message) => {code(message)});
 PARAMETER   TYPE              DESCRIPTION
 reaction    MessageReaction   The reaction that was removed */
 messageReactionRemoveEmoji(code) {
-client.on("messageReactionRemoveEmoji", async (reaction) => {code(reaction)});
+this.on("messageReactionRemoveEmoji", async (reaction) => {code(reaction)});
 };
 
 // messageUpdate
@@ -390,7 +561,7 @@ PARAMETER     TYPE           DESCRIPTION
 oldMessage    Message        The message before the update
 newMessage    Message        The message after the update    */
 messageUpdate(code) {
-client.on("messageUpdate", async (oldMessage, newMessage) => {code(oldMessage, newMessage)});
+this.on("messageUpdate", async (oldMessage, newMessage) => {code(oldMessage, newMessage)});
 };
 
 // presenceUpdate
@@ -399,7 +570,7 @@ PARAMETER    TYPE               DESCRIPTION
 oldMember    GuildMember        The member before the presence update
 newMember    GuildMember        The member after the presence update    */
 presenceUpdate(code) {
-client.on("presenceUpdate", async (oldMember, newMember) => {code(oldMember, newMember)});
+this.on("presenceUpdate", async (oldMember, newMember) => {code(oldMember, newMember)});
 };
 
 // rateLimit
@@ -407,13 +578,13 @@ client.on("presenceUpdate", async (oldMember, newMember) => {code(oldMember, new
 PARAMETER       TYPE            DESCRIPTION
 rateLimitData   RateLimitData   Object containing the rate limit info   */
 rateLimit(code) {
-client.on("rateLimit", async (rateLimitData) => {code(rateLimitData)});
+this.on("rateLimit", async (rateLimitData) => {code(rateLimitData)});
 }
 
 // ready
 /* Emitted when the client becomes ready to start working.    */
 ready(code) {
-client.on("ready", async (client) => {code(client)});
+this.on("ready", async (client) => {code(client)});
 };
 
 // roleCreate
@@ -421,7 +592,7 @@ client.on("ready", async (client) => {code(client)});
 PARAMETER    TYPE        DESCRIPTION
 role         Role        The role that was created    */
 roleCreate(code) {
-client.on("roleCreate", async (role) => {code(role)});
+this.on("roleCreate", async (role) => {code(role)});
 };
 
 // roleDelete
@@ -429,7 +600,7 @@ client.on("roleCreate", async (role) => {code(role)});
 PARAMETER    TYPE        DESCRIPTION
 role         Role        The role that was deleted    */
 roleDelete(code) {
-client.on("roleDelete", async (role) => {code(role)});
+this.on("roleDelete", async (role) => {code(role)});
 };
 
 // roleUpdate
@@ -438,7 +609,7 @@ PARAMETER      TYPE        DESCRIPTION
 oldRole        Role        The role before the update
 newRole        Role        The role after the update    */
 roleUpdate(code) {
-client.on("roleUpdate", async (oldRole, newRole) => {code(oldRole, newRole)});
+this.on("roleUpdate", async (oldRole, newRole) => {code(oldRole, newRole)});
 };
 
 // shardDisconnect
@@ -447,7 +618,7 @@ PARAMETER   TYPE         DESCRIPTION
 event       CloseEvent   The WebSocket close event
 id          number       The shard id that disconnected */
 shardDisconnect(code) {
-client.on("shardDisconnect", async (event, id) => {code(event, id)});
+this.on("shardDisconnect", async (event, id) => {code(event, id)});
 };
 
 // shardError
@@ -456,7 +627,7 @@ PARAMETER   TYPE    DESCRIPTION
 error       Error   The encountered error
 shardId     number  The shard that encountered this error   */
 shardError(code) {
-client.on("shardError", async (error, shardId) => {code(error, shardId)});
+this.on("shardError", async (error, shardId) => {code(error, shardId)});
 };
 
 // shardReady
@@ -465,7 +636,7 @@ PARAMETER            TYPE               DESCRIPTION
 id                   number             The shard id that turned ready
 unavailableGuilds    ?Set <Snowflake>   Set of unavailable guild ids, if any  */
 shardReady(code) {
-client.on("shardReady", async (id, unavailableGuilds) => {code(id, unavailableGuilds)});
+this.on("shardReady", async (id, unavailableGuilds) => {code(id, unavailableGuilds)});
 };
 
 // shardReconnecting
@@ -473,7 +644,7 @@ client.on("shardReady", async (id, unavailableGuilds) => {code(id, unavailableGu
 PARAMETER   TYPE     DESCRIPTION
 id          number   The shard id that is attempting to reconnect   */
 shardReconnecting(code) {
-client.on("shardReconnecting", async (id) => {code(id)});
+this.on("shardReconnecting", async (id) => {code(id)});
 };
 
 // shardResume
@@ -482,7 +653,7 @@ PARAMETER        TYPE     DESCRIPTION
 id               number   The shard id that resumed
 replayedEvents   number   The amount of replayed events   */
 shardResume(code) {
-client.on("shardResume", async (id, replayedEvents) => {code(id, replayedEvents)});
+this.on("shardResume", async (id, replayedEvents) => {code(id, replayedEvents)});
 };
 
 // stageInstanceCreate
@@ -490,7 +661,7 @@ client.on("shardResume", async (id, replayedEvents) => {code(id, replayedEvents)
 PARAMETER       TYPE            DESCRIPTION
 stageInstance   StageInstance   The created stage instance  */
 stageInstanceCreate(code) {
-client.on("stageInstanceCreate", async (stageInstance) => {code(stageInstance)});
+this.on("stageInstanceCreate", async (stageInstance) => {code(stageInstance)});
 };
 
 // stageInstanceDelete
@@ -498,7 +669,7 @@ client.on("stageInstanceCreate", async (stageInstance) => {code(stageInstance)})
 PARAMETER       TYPE            DESCRIPTION
 stageInstance   StageInstance   The deleted stage instance   */
 stageInstanceDelete(code) {
-client.on("stageInstanceDelete", async (stageInstance) => {code(stageInstance)});
+this.on("stageInstanceDelete", async (stageInstance) => {code(stageInstance)});
 };
 
 // stageInstanceUpdate
@@ -507,7 +678,7 @@ PARAMETER          TYPE             DESCRIPTION
 oldStageInstance   ?StageInstance   The stage instance before the update
 newStageInstance   StageInstance    The stage instance after the update     */
 stageInstanceUpdate(code) {
-client.on("stageInstanceUpdate", async (oldStageInstance, newStageInstance) => {code(oldStageInstance, newStageInstance)});
+this.on("stageInstanceUpdate", async (oldStageInstance, newStageInstance) => {code(oldStageInstance, newStageInstance)});
 };
 
 // stickerCreate
@@ -515,14 +686,14 @@ client.on("stageInstanceUpdate", async (oldStageInstance, newStageInstance) => {
 PARAMETER   TYPE      DESCRIPTION
 sticker     Sticker   The sticker that was created  */
 stickerCreate(code) {
-client.on("stickerCreate", async (sticker) => {code(sticker)});
+this.on("stickerCreate", async (sticker) => {code(sticker)});
 };
 // stickerDelete
 /* Emitted whenever a custom sticker is deleted in a guild.
 PARAMETER   TYPE      DESCRIPTION
 sticker     Sticker   The sticker that was deleted  */
 stickerDelete(code) {
-client.on("stickerDelete", async (sticker) => {code(sticker)});
+this.on("stickerDelete", async (sticker) => {code(sticker)});
 };
 
 // stickerUpdate
@@ -531,7 +702,7 @@ PARAMETER    TYPE      DESCRIPTION
 oldSticker   Sticker   The old sticker
 newSticker   Sticker   The new sticker      */
 stickerUpdate(code) {
-client.on("stickerUpdate", async (oldSticker, newSticker) => {code(oldSticker, newSticker)});
+this.on("stickerUpdate", async (oldSticker, newSticker) => {code(oldSticker, newSticker)});
 };
 
 // threadCreate
@@ -540,7 +711,7 @@ PARAMETER      TYPE            DESCRIPTION
 thread         ThreadChannel   The thread that was created
 newlyCreated   boolean         Whether the thread was newly created  */
 threadCreate(code) {
-client.on("threadCreate", async (thread, newlyCreated) => {code(thread, newlyCreated)});
+this.on("threadCreate", async (thread, newlyCreated) => {code(thread, newlyCreated)});
 };
 
 // threadDelete
@@ -548,7 +719,7 @@ client.on("threadCreate", async (thread, newlyCreated) => {code(thread, newlyCre
 PARAMETER   TYPE            DESCRIPTION
 thread      ThreadChannel   The thread that was deleted     */
 threadDelete(code) {
-client.on("threadDelete", async (thread) => {code(thread)});
+this.on("threadDelete", async (thread) => {code(thread)});
 };
 
 // threadListSync
@@ -556,7 +727,7 @@ client.on("threadDelete", async (thread) => {code(thread)});
 PARAMETER   TYPE                                    DESCRIPTION
 threads     Collection <Snowflake, ThreadChannel>   The threads that were synced */
 threadListSync(code) {
-client.on("threadListSync", async (threads) => {code(threads)});
+this.on("threadListSync", async (threads) => {code(threads)});
 };
 
 // threadMembersUpdate
@@ -566,7 +737,7 @@ PARAMETER    TYPE                                   DESCRIPTION
 oldMembers   Collection <Snowflake, ThreadMember>   The members before the update
 newMembers   Collection <Snowflake, ThreadMember>   The members after the update    */
 threadMembersUpdate(code) {
-client.on("threadMembersUpdate", async (oldMembers, newMembers) => {code(oldMembers, newMembers)});
+this.on("threadMembersUpdate", async (oldMembers, newMembers) => {code(oldMembers, newMembers)});
 };
 
 // threadMemberUpdate
@@ -575,7 +746,7 @@ PARAMETER   TYPE           DESCRIPTION
 oldMember   ThreadMember   The member before the update
 newMember   ThreadMember   The member after the update      */
 threadMemberUpdate(code) {
-client.on("threadMemberUpdate", async (oldMember, newMember) => {code(oldMember, newMember)});
+this.on("threadMemberUpdate", async (oldMember, newMember) => {code(oldMember, newMember)});
 }
 
 // threadUpdate
@@ -584,7 +755,7 @@ PARAMETER   TYPE            DESCRIPTION
 oldThread   ThreadChannel   The thread before the update
 newThread   ThreadChannel   The thread after the update     */
 threadUpdate(code) {
-client.on("threadUpdate", async (oldThread, newThread) => {code(oldThread, newThread)});
+this.on("threadUpdate", async (oldThread, newThread) => {code(oldThread, newThread)});
 };
 
 // typingStart
@@ -593,7 +764,7 @@ PARAMETER      TYPE            DESCRIPTION
 channel        Channel         The channel the user started typing in
 user           User            The user that started typing    */
 typingStart(code) {
-client.on("typingStart", async (channel, user) => {code(channel, user)});
+this.on("typingStart", async (channel, user) => {code(channel, user)});
 };
 
 // userUpdate
@@ -602,7 +773,7 @@ PARAMETER      TYPE        DESCRIPTION
 oldUser        User        The user before the update
 newUser        User        The user after the update    */
 userUpdate(code) {
-client.on("userUpdate", async (oldUser, newUser) => {code(oldUser, newUser)});
+this.on("userUpdate", async (oldUser, newUser) => {code(oldUser, newUser)});
 };
 
 // voiceStateUpdate
@@ -611,7 +782,7 @@ PARAMETER    TYPE             DESCRIPTION
 oldMember    GuildMember      The member before the voice state update
 newMember    GuildMember      The member after the voice state update    */
 voiceStateUpdate(code) {
-client.on("voiceStateUpdate", async (oldMember, newMember) => {code(oldMember, newMember)});
+this.on("voiceStateUpdate", async (oldMember, newMember) => {code(oldMember, newMember)});
 };
 
 // warn
@@ -619,7 +790,7 @@ client.on("voiceStateUpdate", async (oldMember, newMember) => {code(oldMember, n
 PARAMETER    TYPE       DESCRIPTION
 info         string     The warning   */
 warn(code) {
-client.on("warn", async (info) => {code(info)});
+this.on("warn", async (info) => {code(info)});
 };
 
 // webhookUpdate
@@ -629,11 +800,279 @@ channel     TextChannel    The channel that had a webhook update
             NewsChannel
             VoiceChannel        */
 webhookUpdate(code) {
-client.on("webhookUpdate", async (channel) => {code(channel)});
+this.on("webhookUpdate", async (channel) => {code(channel)});
  };
-}
 
-module.exports = client = new BOT;
+// embed and button
+
+// Create a new ActionRowBuilder 
+/*
+The ActionRowBuilder in discord.js is used to create and manage interactive components like buttons, select menus, and text inputs in a message. It organizes these components into a row within a message, allowing for a structured layout. Each action row can hold up to 5 components.
+*/
+ActionRow(component) {
+return new ActionRowBuilder()
+.addComponents(component);
+};
+
+// Create Button
+/*
+The ButtonBuilder in discord.js is used to create interactive buttons for messages. It allows customization of button style, label, emoji, and custom ID for interaction handling. Buttons can be added to an ActionRowBuilder to be sent within messages.
+*/
+Button(buttons) {
+buttons.map((button) => {
+return new ButtonBuilder()
+.setCustomId(button.customId)
+.setLabel(button.label)
+.setStyle(button.style)
+.setDisabled(button.disabled || false)
+.setEmoji(button.emoji || null)
+.setURL(button.url || null);
+    });
+};
+// create Select Menu
+/*
+The StringSelectMenuBuilder in discord.js is used to create customizable select menus for messages. It allows for multiple options to be defined with labels, descriptions, and values. Users can interact with the menu to make selections which can then be handled by the bot
+*/
+SelectMenu(menu) {
+menu.map((menu) => {
+return new StringSelectMenuBuilder()
+.setCustomId(menu.customId)
+.setPlaceholder(menu.placeholder)
+.addOptions(menu.options);
+});
+};
+// create Menu Options
+/*
+The StringSelectMenuOptionBuilder in discord.js is a class used to define individual options within a select menu. It allows setting properties like label, value, description, and default selection status. These options are then added to a StringSelectMenuBuilder to create a complete select menu.
+*/
+MenuOption(options) {
+options.map((options) => {
+return new StringSelectMenuOptionBuilder()
+.setLabel(options.label)
+.setDescription(options.dec)
+.setValue(options.value)
+});
+};
+// create Embed
+/*
+The EmbedBuilder in discord.js is a utility class for creating rich message embeds. It provides a fluent interface to set properties like title, description, color, fields, and images. Embeds can enhance message presentation with structured and visually appealing content.
+*/
+Embed({
+title,
+description,
+url,
+color,
+timestamp = new Date(),
+footerText,
+footerIcon,
+thumbnail,
+image,
+authorName,
+authorURL,
+authorIcon,
+fields
+}) {
+new MessageEmbed()
+.setTitle(title)
+.setDescription(description)
+.setURL(url)
+.setColor(color)
+.setTimestamp(timestamp)
+.setFooter({ text: footerText, iconURL: footerIcon })
+.setThumbnail(thumbnail)
+.setImage(image)
+.setAuthor({ name: authorName, url: authorURL, iconURL: authorIcon })
+.addFields(fields);
+};
+};
+
+
+module.exports = {
+  Client = new BOT, 
+  ActionRowBuilder,
+  ActivityOptions,
+  ActivityType,
+  ApplicationCommandManager,
+  ApplicationCommandOptionType,
+  ApplicationCommandType,
+  Attachment,
+  AttachmentBuilder,
+  AttachmentPayload,
+  AuditLogEvent,
+  AutoModerationActionExecution,
+  AutoModerationActionMetadata,
+  AutoModerationRuleTriggerMetadata,
+  AutoModerationRuleTriggerType,
+  Awaitable,
+  Base,
+  BaseApplicationCommandData,
+  BaseGuild,
+  BaseGuildEmojiManager,
+  BaseGuildTextChannel,
+  BaseGuildVoiceChannel,
+  BaseMessageComponent,
+  BitField,
+  ButtonBuilder,
+  ButtonInteraction,
+  ButtonStyle,
+  CacheType,
+  CacheWithLimitsOptions,
+  CategoryChannel,
+  Channel,
+  ChannelFlags,
+  ChannelManager,
+  ChannelType,
+  ChatInputApplicationCommandData,
+  ClientApplication,
+  ClientEvents,
+  ClientOptions,
+  ClientPresence,
+  ClientUser,
+  ColorResolvable,
+  Color,
+  CommandInteraction,
+  CommandInteractionOptionResolver,
+  ComponentType,
+  ContextMenuCommandInteraction,
+  ContextMenuInteraction,
+  DataResolver,
+  DataStore,
+  DMChannel,
+  Embed,
+  EmbedBuilder,
+  Emoji,
+  EmojiIdentifierResolvable,
+  EmojiManager,
+  ErrorCodes,
+  Events,
+  FetchOptions,
+  FileOptions,
+  ForumChannel,
+  GatewayIntents,
+  Guild,
+  GuildApplicationCommandManager,
+  GuildAuditLogs,
+  GuildAuditLogsEntry,
+  GuildBan,
+  GuildBanManager,
+  GuildChannel,
+  GuildChannelManager,
+  GuildChannelResolvable,
+  GuildEmoji,
+  GuildEmojiManager,
+  GuildFeature,
+  GuildIntegration,
+  GuildInviteManager,
+  GuildManager,
+  GuildMember,
+  GuildMemberManager,
+  GuildMemberResolvable,
+  GuildPreview,
+  GuildScheduledEvent,
+  GuildScheduledEventManager,
+  GuildScheduledEventUser,
+  GuildSticker,
+  GuildStickerManager,
+  HTTPError,
+  Interaction,
+  InteractionCollector,
+  InteractionDeferOptions,
+  InteractionReplyOptions,
+  InteractionType,
+  IntentsBitField,
+  Invite,
+  InviteManager,
+  LimitedCollection,
+  LocalizationMap,
+  Message,
+  MessageAdditions,
+  MessageAttachment,
+  MessageButton,
+  MessageCollector,
+  MessageComponentInteraction,
+  MessageCreateOptions,
+  MessageEditOptions,
+  MessageEmbed,
+  MessageFlags,
+  MessageManager,
+  MessageMentions,
+  MessageOptions,
+  MessagePayload,
+  MessageReaction,
+  MessageReactionResolvable,
+  MessageSelectMenu,
+  MessageSelectOption,
+  MessageTarget,
+  MessageType,
+  ModalBuilder,
+  ModalSubmitInteraction,
+  ModalSubmitFields,
+  MultipartData,
+  NewsChannel,
+  Options,
+  PartialTypes,
+  PermissionFlagsBits,
+  PermissionOverwriteManager,
+  PermissionOverwrites,
+  Permissions,
+  PermissionsBitField,
+  Presence,
+  PresenceManager,
+  ReactionCollector,
+  ReactionEmoji,
+  ReactionManager,
+  ReactionUserManager,
+  Resolvable,
+  Role,
+  RoleManager,
+  RoleResolvable,
+  SelectMenuBuilder,
+  SelectMenuInteraction,
+  SelectMenuOptionBuilder,
+  Shard,
+  ShardClientUtil,
+  ShardEvents,
+  ShardManager,
+  Snowflake,
+  StageChannel,
+  StageInstance,
+  StageInstanceManager,
+  Sticker,
+  StickerManager,
+  StickerPack,
+  StickerResolvable,
+  Sweepers,
+  SystemChannelFlags,
+  SystemChannelFlagsBitField,
+  Team,
+  TeamMember,
+  TextChannel,
+  ThreadChannel,
+  ThreadChannelManager,
+  ThreadChannelResolvable,
+  ThreadManager,
+  ThreadMember,
+  ThreadMemberManager,
+  ThreadMemberResolvable,
+  Typing,
+  User,
+  UserContextMenuCommandData,
+  UserFlags,
+  UserFlagsBitField,
+  UserManager,
+  UserResolvable,
+  Util,
+  ValidationError,
+  VerificationLevel,
+  VoiceChannel,
+  VoiceRegion,
+  VoiceState,
+  VoiceStateManager,
+  Webhook,
+  WebhookClient,
+  WebhookMessageOptions,
+  WebhookToken
+};
 
 process.on("unhandledRejection", (reason, p) => {
 
