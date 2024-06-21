@@ -23,7 +23,7 @@ const { Client } = require("simple-discord-online");
 const { Client } = require("simple-discord-online");
 const client = Client;
 
-client.start("Token");
+client.login("Token");
 
 client.ready((client) => {
 console.log("bot is online")

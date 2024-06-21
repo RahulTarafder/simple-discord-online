@@ -1,6 +1,6 @@
 {
   "name": "simple-discord-online",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "simple-discord-online is a package which one help you to create discord bot so easily",
   "main": "Client.js",
   "scripts": {
