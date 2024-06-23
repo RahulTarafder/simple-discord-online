@@ -32,6 +32,7 @@ const {
   ChannelFlags,
   ChannelManager,
   ChannelType,
+  Client,
   ChatInputApplicationCommandData,
   ClientApplication,
   ClientEvents,
@@ -46,7 +47,6 @@ const {
   ComponentType,
   ContextMenuCommandInteraction,
   ContextMenuInteraction,
-  Discord,
   DataResolver,
   DataStore,
   DMChannel,
@@ -189,7 +189,7 @@ const {
 } = require('discord.js');
 
 
-class BOT extends Discord.Client {
+class BOT extends Client {
   constructor() {
     super({
       partials: [
