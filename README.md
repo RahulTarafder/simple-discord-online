@@ -21,12 +21,46 @@ const { Client } = require("simple-discord-online");
 # Demo
 ```js
 const { Client } = require("simple-discord-online");
-const client = Client;
+const client = new Client({
+    partials: {
+        channel: true,
+        guildMember: true,
+        message: true,
+        user: false,
+        guild: false,
+        guildEmoji: false,
+        guildBan: false,
+        messageReaction: true,
+        presence: false,
+        unknown: false,
+    },
+    intents: {
+        guilds: true,
+        guildMembers: true,
+        guildBans: false,
+        guildEmojisAndStickers: false,
+        guildIntegrations: false,
+        guildWebhooks: false,
+        guildInvites: false,
+        guildVoiceStates: true,
+        guildPresences: false,
+        guildMessages: true,
+        guildMessageReactions: true,
+        guildMessageTyping: false,
+        directMessages: false,
+        directMessageReactions: false,
+        directMessageTyping: false,
+        messageContent: true,
+        guildScheduledEvents: false,
+        autoModerationConfiguration: false,
+        autoModerationExecution: false,
+    },
+});;
 
 client.login("Token");
 
 client.ready((client) => {
-console.log("bot is online")
+console.log(`Logged as ${client.user.tag}!`)
 });
 ```
 

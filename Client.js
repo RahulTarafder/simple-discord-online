@@ -190,31 +190,53 @@ const {
 
 
 class BOT extends Client {
-  constructor() {
+  constructor(options = {}) {
     super({
-      partials: [
-        Partials.Channel,
-        Partials.GuildMember,
-        Partials.Message,
-        Partials.User,
-      ],
-      intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.GuildVoiceStates,
-        GatewayIntentBits.MessageContent,
-        GatewayIntentBits.GuildMembers,
-      ],
-      shards: "auto",
-      failIfNotExists: false,
-      allowedMentions: {
-        parse: ["everyone", "roles", "users"],
-        users: [],
-        roles: [],
-        repliedUser: false,
-      },
-    });
-  }
+      partials: this.Partials(option.partials),
+      intents: this.Intents(options.intents),
+  })
+}
+
+  // The `Partials` function filters the desired Partials based on provided boolean flags, enabling only those set to `true`. This approach allows dynamic configuration of a Discord bot's permissions, enhancing flexibility and security.
+static Partials(options = {}) {
+    return [
+        options.channel ? Partials.Channel : false,
+        options.guildMember ? Partials.GuildMember : false,
+        options.message ? Partials.Message : false,
+        options.user ? Partials.User : false,
+        options.guild ? Partials.Guild : false,
+        options.guildEmoji ? Partials.GuildEmoji : false,
+        options.guildBan ? Partials.GuildBan : false,
+        options.messageReaction ? Partials.MessageReaction : false,
+        options.presence ? Partials.Presence : false,
+        options.unknown ? Partials.Unknown : false,
+    ].filter(Boolean);
+}
+  
+  // The `Intents` function filters the desired intents based on provided boolean flags, enabling only those set to `true`. This approach allows dynamic configuration of a Discord bot's permissions, enhancing flexibility and security.
+static Intents(options = {}) {
+    return [
+        options.guilds ? GatewayIntentBits.Guilds : false,
+        options.guildMembers ? GatewayIntentBits.GuildMembers : false,
+        options.guildBans ? GatewayIntentBits.GuildBans : false,
+        options.guildEmojisAndStickers ? GatewayIntentBits.GuildEmojisAndStickers : false,
+        options.guildIntegrations ? GatewayIntentBits.GuildIntegrations : false,
+        options.guildWebhooks ? GatewayIntentBits.GuildWebhooks : false,
+        options.guildInvites ? GatewayIntentBits.GuildInvites : false,
+        options.guildVoiceStates ? GatewayIntentBits.GuildVoiceStates : false,
+        options.guildPresences ? GatewayIntentBits.GuildPresences : false,
+        options.guildMessages ? GatewayIntentBits.GuildMessages : false,
+        options.guildMessageReactions ? GatewayIntentBits.GuildMessageReactions : false,
+        options.guildMessageTyping ? GatewayIntentBits.GuildMessageTyping : false,
+        options.directMessages ? GatewayIntentBits.DirectMessages : false,
+        options.directMessageReactions ? GatewayIntentBits.DirectMessageReactions : false,
+        options.directMessageTyping ? GatewayIntentBits.DirectMessageTyping : false,
+        options.messageContent ? GatewayIntentBits.MessageContent : false,
+        options.guildScheduledEvents ? GatewayIntentBits.GuildScheduledEvents : false,
+        options.autoModerationConfiguration ? GatewayIntentBits.AutoModerationConfiguration : false,
+        options.autoModerationExecution ? GatewayIntentBits.AutoModerationExecution : false,
+    ].filter(Boolean); // Filter out any false values
+};
   
   // events
    
@@ -891,7 +913,7 @@ new MessageEmbed()
 
 
 module.exports = {
-  Client: new BOT, 
+  Client: BOT, 
   ActionRowBuilder,
   ActivityOptions,
   ActivityType,
@@ -984,6 +1006,7 @@ module.exports = {
   InteractionReplyOptions,
   InteractionType,
   IntentsBitField,
+  Intents,
   Invite,
   InviteManager,
   LimitedCollection,
