@@ -882,32 +882,18 @@ return new StringSelectMenuOptionBuilder()
 /*
 The EmbedBuilder in discord.js is a utility class for creating rich message embeds. It provides a fluent interface to set properties like title, description, color, fields, and images. Embeds can enhance message presentation with structured and visually appealing content.
 */
-Embed({
-title,
-description,
-url,
-color,
-timestamp = new Date(),
-footerText,
-footerIcon,
-thumbnail,
-image,
-authorName,
-authorURL,
-authorIcon,
-fields
-}) {
+Embed(options) {
 new MessageEmbed()
-.setTitle(title)
-.setDescription(description)
-.setURL(url)
-.setColor(color)
-.setTimestamp(timestamp)
-.setFooter({ text: footerText, iconURL: footerIcon })
-.setThumbnail(thumbnail)
-.setImage(image)
-.setAuthor({ name: authorName, url: authorURL, iconURL: authorIcon })
-.addFields(fields);
+.setTitle(options.title)
+.setDescription(options.description)
+.setURL(options.url)
+.setColor(options.color)
+.setTimestamp(options.timestamp || new Date())
+.setFooter({ text: options.footerText, iconURL: options.footerIcon })
+.setThumbnail(options.thumbnail)
+.setImage(options.image)
+.setAuthor({ name: options.authorName, url: options.authorURL, iconURL: options.authorIcon})
+.addFields(options.fields);
 };
 };
 

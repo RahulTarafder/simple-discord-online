@@ -116,19 +116,19 @@ The EmbedBuilder in discord.js is a utility class for creating rich message embe
 */
 ```js
 client.Embed({
-title = 'Title',
-description = 'Description',
-url = 'https://example.com',
-color = '#ffffff',
+title: 'Title',
+description: 'Description',
+url: 'https://example.com',
+color: '#ffffff',
 timestamp,
-footerText = 'Footer',
-footerIcon = 'https://example.com',
-thumbnail = 'https://example.com',
-image = 'https://example.com',
-authorName = 'Author',
-authorURL = 'https://example.com',
-authorIcon = 'https://example.com',
-fields = [{
+footerText: 'Footer',
+footerIcon: 'https://example.com',
+thumbnail: 'https://example.com',
+image: 'https://example.com',
+authorName: 'Author',
+authorURL: 'https://example.com',
+authorIcon: 'https://example.com',
+fields: [{
 name: 'Field 1',
 value: 'Value 1', inline: true },
 {
